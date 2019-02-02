@@ -41,7 +41,21 @@ sudo usermod -aG docker your-user
 ```
 
 ## Useful commands
-- Attaching to a running image:
+
 ```bash
+# Attaching to a running image
 docker exec -it [container-id] bash
+
+# Clean up unused containers (careful!)
+docker system prune
+
+# Clean up unused volumes
+docker volume prune
+```
+
+## Examples
+```bash
+# Run a container that always restarts called "jenkins" in daemon mode, with a volume called "jenkins-home" mounted to 
+"/var/jenkins_home" in the container. Map port 8081 on the host to 8080 on the container and use the image tagged "mhurd/jenkins:1.0"
+docker run --restart always --name jenkins -d -v jenkins-home:/var/jenkins_home -p 8081:8080 -p 50000:50000 mhurd/jenkins:1.0
 ```
