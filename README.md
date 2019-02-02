@@ -39,3 +39,9 @@ Add your user to the *docker* group.
 ```bash
 sudo usermod -aG docker your-user
 ```
+
+## Useful commands
+- Attaching to a running image:
+```bash
+docker exec -it [container-id] bash
+```
