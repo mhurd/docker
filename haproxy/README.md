@@ -8,3 +8,7 @@ and then simply copy in our custom config.
 ```bash
 COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 ```
+You can run the container using:
+```bash
+docker run --restart always --name haproxy -d -p 80:80 mhurd/haproxy:1.9.3
+```
