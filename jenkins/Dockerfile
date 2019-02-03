@@ -7,4 +7,5 @@ RUN /bin/sh -c 'add-apt-repository "deb [arch=amd64] https://download.docker.com
 RUN /bin/sh -c 'apt-get update'
 RUN /bin/sh -c 'apt-get install -y docker-ce docker-ce-cli'
 RUN /bin/sh -c 'usermod -aG docker jenkins'
+RUN /bin/sh -c 'echo "jenkins ALL=(ALL) NOPASSWD: /usr/bin/docker" >> /etc/sudoers'
 USER jenkins
