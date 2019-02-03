@@ -1,4 +1,5 @@
-There are a few things we want to be able to do in this dockerised verison of Jenkins so we'll need to make some additons to the official latest LTS version.
+## Jenkins in Docker
+There are a few things we want to be able to do in this dockerised verison of Jenkins so we'll need to make some additons to the official latest LTS version (https://github.com/jenkinsci/docker/blob/master/README.md).
 ```bash
 FROM jenkins/jenkins:lts
 ```
@@ -8,7 +9,7 @@ USER root
 RUN /bin/sh -c 'apt-get update'
 RUN /bin/sh -c 'apt-get install --no-install-recommends --no-install-suggests -y less vim apt-transport-https ca-certificates curl gnupg-agent software-properties-common git maven'
 ```
-Next we install docker (no containerd as we'll be piggy-backing on the host docker):
+Next we install docker (no containerd as we'll be piggy-backing o.n the host docker):
 ```bash
 RUN /bin/sh -c 'curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add --no-tty -'
 RUN /bin/sh -c 'add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"'
@@ -43,3 +44,5 @@ On the first run you'll need to check the jenkins logs to obtain the generated a
 ```bash
 docker logs jenkins
 ```
+### Useful links
+Running Jenkins behind HAProxy: https://wiki.jenkins.io/display/JENKINS/Running+Jenkins+behind+HAProxy
