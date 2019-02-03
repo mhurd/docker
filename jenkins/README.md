@@ -28,7 +28,7 @@ docker build jenkins --tag mhurd/jenkins:1.0
 ```
 You can run this in detached mode using:
 ```bash
-docker run --restart always --name jenkins -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins-home:/var/jenkins_home -p 8081:8080 -p 50000:50000 mhurd/jenkins:1.0
+docker run --restart always --name jenkins -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins-home:/var/jenkins_home -v mvn-repository:/var/jenkins_home/.m2/repository -p 8081:8080 -p 50000:50000 mhurd/jenkins:2.163
 ```
 This will do the following:
 - set the restart policy to always to it'll start-up on reboot.
@@ -36,6 +36,7 @@ This will do the following:
 - run in daemon mode.
 - mount the host docker socket into the container so the jenkins container can use docker.
 - mount volume named *jenkins-home* into the container, this will be where all the jenkins files will be stored.
+- mount volume named *mvn-repository* into the container, this will be where the mvn repository will be stored, we want to share this volume with all containers that use mvn to build things.
 - map port *8081* on the host to *8080* on the container (port *8080* was taken on my host). 
 - map port *50000* on the host to port *50000* on the container, this is used by remote build slaves.
 - finally we indicate the image we want to use.
