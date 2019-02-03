@@ -1,7 +1,7 @@
 ## Jenkins in Docker
-There are a few things we want to be able to do in this dockerised verison of Jenkins so we'll need to make some additons to the official latest LTS version (https://github.com/jenkinsci/docker/blob/master/README.md).
+There are a few things we want to be able to do in this dockerised verison of Jenkins so we'll need to make some additons to the official version (https://github.com/jenkinsci/docker/blob/master/README.md). We'll choose a specific version so we can control upgrades.
 ```bash
-FROM jenkins/jenkins:lts
+FROM jenkins/jenkins:2.163
 ```
 First we pull in the dependencies required to install Docker (and also install mvn and git whilst we're there), note we need to be *root* to do these steps, we'll switch back to the *jenkins* user when we're done:
 ```bash
