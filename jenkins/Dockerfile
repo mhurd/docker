@@ -9,3 +9,4 @@ RUN /bin/sh -c 'apt-get install -y docker-ce docker-ce-cli'
 RUN /bin/sh -c 'usermod -aG docker jenkins'
 RUN /bin/sh -c 'echo "jenkins ALL=(ALL) NOPASSWD: /usr/bin/docker" >> /etc/sudoers'
 USER jenkins
+RUN /bin/sh -c 'cd /var/jenkins_home && wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod +x lein && ./lein'
