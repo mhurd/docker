@@ -51,6 +51,18 @@ docker system prune
 
 # Clean up unused volumes
 docker volume prune
+
+# Pushing to a local repo
+docker login <REGISTRY_HOST>:<REGISTRY_PORT>
+docker tag <IMAGE_ID> <REGISTRY_HOST>:<REGISTRY_PORT>/<APPNAME>:<APPVERSION>
+docker push <REGISTRY_HOST>:<REGISTRY_PORT>/<APPNAME>:<APPVERSION>
+
+Example :
+
+docker login repo.company.com:3456
+docker tag 19fcc4aa71ba repo.company.com:3456/myapp:0.1
+docker push repo.company.com:3456/myapp:0.1
+
 ```
 
 ## Examples
