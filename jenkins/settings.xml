@@ -7,12 +7,14 @@
     <server>
       <id>nexus-snapshots</id>
       <username>jenkins-build</username>
-      <password>fadsf34_C3</password>
+      <password>jenkins-build</password>
+      <url>https://nexus.home:443/repository/maven-snapshots</url>
     </server>
     <server>
       <id>nexus-releases</id>
       <username>jenkins-build</username>
-      <password>fadsf34_C3</password>
+      <password>jenkins-build</password>
+      <url>https://nexus.home:443/repository/maven-releases</url>
     </server>
   </servers>
 
@@ -20,7 +22,7 @@
     <mirror>
       <id>central</id>
       <name>central</name>
-      <url>http://nexus.home:8082/repository/maven-group/</url>
+      <url>https://nexus.home:443/repository/maven-group/</url>
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
