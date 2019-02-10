@@ -8,13 +8,11 @@
       <id>nexus-snapshots</id>
       <username>${env.NEXUS_USER}</username>
       <password>${env.NEXUS_PASSWORD}</password>
-      <url>https://nexus.home:443/repository/maven-snapshots</url>
     </server>
     <server>
       <id>nexus-releases</id>
       <username>${env.NEXUS_USER}</username>
       <password>${env.NEXUS_PASSWORD}</password>
-      <url>https://nexus.home:443/repository/maven-releases</url>
     </server>
   </servers>
 
@@ -26,5 +24,48 @@
       <mirrorOf>*</mirrorOf>
     </mirror>
   </mirrors>
+
+  <profiles>
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>	      
+      <repositories>
+        <repository>
+          <id>nexus-snapshots</id>
+          <name>Nexus Snapshots</name>
+          <releases>
+            <enabled>false</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+             <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+           <url>https://nexus.home:443/repository/maven-snapshots</url>
+          <layout>default</layout>
+        </repository>
+        <repository>
+          <id>nexus-releases</id>
+          <name>Nexus Releases</name>
+          <releases>
+             <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+            <checksumPolicy>warn</checksumPolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>never</updatePolicy>
+            <checksumPolicy>fail</checksumPolicy>
+          </snapshots>
+          <url>https://nexus.home:443/repository/maven-releases</url>
+          <layout>default</layout>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
 
 </settings>
