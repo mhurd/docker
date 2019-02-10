@@ -10,5 +10,6 @@ COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
 ```
 You can run the container using:
 ```bash
-docker run --restart always --name haproxy -d -p 80:80 mhurd/haproxy:1.9.3
+docker run --restart always --name haproxy -d -p 80:80 -p 443:443 -v /etc/ssl:/etc/ssl mhurd/haproxy:1.9.3
 ```
+Note that we are mounting the */etc/ssl* directory from the host into the container to help with SSL temrination.
