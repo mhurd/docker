@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.163
+FROM jenkins/jenkins:2.164
 USER root
 RUN /bin/sh -c 'apt-get update'
 RUN /bin/sh -c 'apt-get install --no-install-recommends --no-install-suggests -y less vim apt-transport-https ca-certificates curl gnupg-agent software-properties-common git maven'
